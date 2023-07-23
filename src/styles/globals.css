@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: black;
+  color: #fff !important;
+}
+
+.horror-page {
+  text-align: center;
+}
+
+.horror-header {
+  background-color: darkred;
+  padding: 20px;
+}
+
+.horror-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.horror-content {
+  padding: 20px;
+  background-color: black;
+}
+
+.horror-content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.horror-image {
+  max-width: 100%;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.horror-footer {
+  background-color: darkred;
+  padding: 10px;
+}
+
+.horror-footer p {
+  margin: 0;
+}
