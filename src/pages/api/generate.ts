@@ -1,6 +1,6 @@
 import { OpenAIStream, OpenAIStreamPayload } from '@/src/utils/OpenAIStream';
 
-if (!process.env.OPENAI_API_KEY) {
+if (!process.env.OPENAI_API_KEY_VILLAIN) {
   throw new Error('Missing env var from OpenAI');
 }
 
@@ -20,16 +20,17 @@ const handler = async (req: Request): Promise<Response> => {
   const payload: OpenAIStreamPayload = {
     model: 'text-davinci-003',
     prompt,
-    temperature: 0.7,
+    temperature: 0.77,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 200,
+    max_tokens: 3000,
     stream: true,
     n: 1,
   };
 
   const stream = await OpenAIStream(payload);
+
   return new Response(stream);
 };
 

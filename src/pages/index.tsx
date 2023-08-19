@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import Image from 'next/image';
 
@@ -6,6 +6,14 @@ const HorrorPage = () => {
   const prompt = `Generate a horror story`;
   const [story, setStory] = useState('');
   const [isLoading, setLoading] = useState(false);
+
+  const myRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToHeader = () => {
+    if (myRef.current !== null) {
+      myRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const generateStory = async (e: any) => {
     e.preventDefault();
@@ -20,15 +28,22 @@ const HorrorPage = () => {
         prompt,
       }),
     });
+    console.log('Edge function returned.');
 
     if (!response.ok) {
       throw new Error(response.statusText);
     }
 
+    setTimeout(() => {
+      scrollToHeader();
+    }, 500);
+
+    // This data is a ReadableStream
     const data = response.body;
     if (!data) {
       return;
     }
+
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
@@ -39,7 +54,7 @@ const HorrorPage = () => {
       const chunkValue = decoder.decode(value);
       setStory((prev) => prev + chunkValue);
     }
-
+    scrollToHeader();
     setLoading(false);
   };
 
@@ -61,10 +76,10 @@ const HorrorPage = () => {
         <Button variant={'ghost'} onClick={(e) => generateStory(e)}>
           Tell me a story
         </Button>
-        <p>This is some creepy text. Lorem ipsum dolor sit amet...</p>
+        {isLoading ? <p>Loading...</p> : <p>{story}</p>}
       </main>
       <footer className="horror-footer">
-        <p>© {new Date().getFullYear()} Horror App. Powered by ChatGPT.</p>
+        <p>© {new Date().getFullYear()} Horror App. Powered by OpenAI.</p>
       </footer>
     </div>
   );
