@@ -20,6 +20,10 @@ body {
 }
 
 .horror-content {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
   padding: 20px;
   background-color: black;
 }
@@ -31,6 +35,8 @@ body {
 
 .horror-image {
   max-width: 100%;
+  width: 80%;
+  height: auto;
   margin: 20px 0;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
@@ -42,4 +48,10 @@ body {
 
 .horror-footer p {
   margin: 0;
+}
+
+.horror-story-container {
+  position: absolute;
+  top: 20%;
+  max-width: 60%;
 }
