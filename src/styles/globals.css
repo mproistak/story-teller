@@ -33,11 +33,15 @@ body {
   line-height: 1.6;
 }
 
-.horror-image {
-  max-width: 100%;
-  width: 80%;
-  height: auto;
-  margin: 20px 0;
+.horror-box {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
+  width: 100%;
+  min-height: fit-content;
+  overflow: auto;
+  height: calc(100vh - 160px);
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
 
@@ -51,7 +55,6 @@ body {
 }
 
 .horror-story-container {
-  position: absolute;
-  top: 20%;
-  max-width: 60%;
+  max-width: 70%;
+  overflow: visible !important;
 }
