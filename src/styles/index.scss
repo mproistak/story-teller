@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+.horror-header h1 {
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 3rem;
+  animation: squiggly-anim 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  outline: none;
+  text-align: center;
+}
+body {
+  line-height: 100vh;
+  background: #111;
+  color: #fff;
+}
+
+@keyframes squiggly-anim {
+  0% {
+    filter: url('#squiggly-0');
+  }
+  25% {
+    filter: url('#squiggly-1');
+  }
+}
