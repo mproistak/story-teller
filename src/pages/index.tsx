@@ -1,6 +1,4 @@
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import Story from '../components/Story';
+import { Footer, Header, Story, Submarine } from '../components';
 import { generateStory } from '../lib/utils';
 
 export type StoryProps = {
@@ -13,6 +11,7 @@ const HorrorPage = ({ story }: StoryProps) => {
       <Header />
       <main className="horror-content">
         <Story story={story} />
+        <Submarine />
       </main>
       <Footer />
     </div>
