@@ -3,6 +3,36 @@ import {
   ParsedEvent,
   ReconnectInterval,
 } from 'eventsource-parser';
+import OpenAI from 'openai';
+
+type Messages = {
+  role: 'user' | 'system' | 'assistant';
+  content: string;
+};
+export interface OpenAIChatCompletionsPayload {
+  model: string;
+  messages: Messages[];
+  temperature: number;
+  top_p: number;
+  frequency_penalty: number;
+  presence_penalty: number;
+  max_tokens: number;
+  n: number;
+}
+
+export async function OpenAIChatCompletions(
+  payload: OpenAIChatCompletionsPayload
+) {
+  try {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY_VILLAIN,
+    });
+    const completion = await openai.chat.completions.create(payload);
+    return completion.choices[0].message.content;
+  } catch (e) {
+    console.log('There is an error', e);
+  }
+}
 
 export interface OpenAIStreamPayload {
   model: string;
