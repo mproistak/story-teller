@@ -4,8 +4,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import Layout from '@layout';
 import theme from '@theme';
-import '@styles/globals.css';
 import '@styles/index.scss';
+import '@styles/globals.css';
 import '@styles/submarine.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
