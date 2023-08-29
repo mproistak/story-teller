@@ -1,7 +1,7 @@
 import {
   OpenAIChatCompletions,
   OpenAIChatCompletionsPayload,
-} from '../utils/OpenAIStream';
+} from '@/src/utils/OpenAIStream';
 
 export const generateStory = async (prompt: string) => {
   const payload: OpenAIChatCompletionsPayload = {
