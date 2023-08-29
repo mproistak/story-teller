@@ -1,5 +1,5 @@
-import { Footer, Header, Story, Submarine } from '@/src/components';
-import { generateStory } from '@/src/lib/utils';
+import { Footer, Header, Story, Submarine } from '@components';
+import { generateStory } from '@utils/helpers';
 
 export type StoryProps = {
   story: string;
