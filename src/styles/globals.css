@@ -58,7 +58,7 @@ body {
   width: 100%;
   min-height: fit-content;
   overflow: auto;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 196px);
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
 
