@@ -55,6 +55,7 @@ body {
 }
 
 .horror-story-container {
+  z-index: 2;
   max-width: 70%;
   overflow: visible !important;
 }
