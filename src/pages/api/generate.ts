@@ -4,10 +4,6 @@ if (!process.env.OPENAI_API_KEY_VILLAIN) {
   throw new Error('Missing env var from OpenAI');
 }
 
-export const config = {
-  runtime: 'edge',
-};
-
 const handler = async (req: Request): Promise<Response> => {
   const { prompt } = (await req.json()) as {
     prompt?: string;
