@@ -17,7 +17,6 @@ const Story = ({ story }: StoryProps) => {
       backgroundImage="/header-image.jpg"
       className="horror-box"
       rounded="md"
-      shadow="md"
     >
       <Collapse in={isOpen} animateOpacity className="horror-story-container">
         <Box
