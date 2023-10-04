@@ -14,7 +14,10 @@ export default function Document() {
           property="og:image"
           content="https://story-teller-henna.vercel.app/header-image.jpg"
         />
-        <meta property="og:description" content="Your daily dosage of horror" />
+        <meta
+          property="og:description"
+          content="In daily bone-chilling articles, we dare to venture into the heart of darkness to unveil spine-tingling tales of horror."
+        />
       </Head>
       <body>
         <Main />
