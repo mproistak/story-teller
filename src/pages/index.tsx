@@ -29,7 +29,7 @@ export async function getStaticProps() {
       story,
     },
     // revalidate: 86400, // Revalidate once per day
-    revalidate: 21600, // Revalidate every six hours
+    revalidate: 60, // Revalidate every one minute
   };
 }
 
