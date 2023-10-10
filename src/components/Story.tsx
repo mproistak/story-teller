@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Box, Collapse, useDisclosure } from '@chakra-ui/react';
-
 import { StoryProps } from '../pages';
 
 const Story = ({ story }: StoryProps) => {
