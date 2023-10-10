@@ -1,8 +1,8 @@
 import { OpenAIStream, OpenAIStreamPayload } from '@utils/OpenAIStream';
 
-export const config = {
-  runtime: 'edge',
-};
+// export const config = {
+//   runtime: 'edge',
+// };
 
 if (!process.env.OPENAI_API_KEY_VILLAIN) {
   throw new Error('Missing env var from OpenAI');
@@ -31,14 +31,15 @@ const handler = async (req: Request): Promise<Response> => {
 
   const stream = await OpenAIStream(payload);
 
-  return new Response(stream, {
-    status: 200,
-    headers: {
-      'Cache-Control': 'public, s-maxage=1',
-      'CDN-Cache-Control': 'public, s-maxage=60',
-      'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
-    },
-  });
+  return new Response(stream);
+  // return new Response(stream, {
+  //   status: 200,
+  //   headers: {
+  //     'Cache-Control': 'public, s-maxage=1',
+  //     'CDN-Cache-Control': 'public, s-maxage=60',
+  //     'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
+  //   },
+  // });
 };
 
 export default handler;
