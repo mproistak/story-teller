@@ -1,25 +1,35 @@
 import {
-  OpenAIChatCompletions,
-  OpenAIChatCompletionsPayload,
+  OpenAICompletions,
+  OpenAICompletionsPayload,
 } from '@utils/OpenAIStream';
 
 export const generateStory = async (prompt: string) => {
-  const payload: OpenAIChatCompletionsPayload = {
-    model: 'gpt-3.5-turbo',
-    messages: [
-      {
-        role: 'user',
-        content: prompt,
-      },
-    ],
+  // const chatCompletionspayload: OpenAIChatCompletionsPayload = {
+  //   model: 'gpt-3.5-turbo',
+  //   messages: [
+  //     {
+  //       role: 'user',
+  //       content: prompt,
+  //     },
+  //   ],
+  //   temperature: 0.77,
+  //   top_p: 1,
+  //   frequency_penalty: 0,
+  //   presence_penalty: 0,
+  //   max_tokens: 3000,
+  //   n: 1,
+  // };
+
+  const payload: OpenAICompletionsPayload = {
+    model: 'gpt-3.5-turbo-instruct',
+    prompt: prompt,
     temperature: 0.77,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
     max_tokens: 3000,
-    n: 1,
   };
 
-  const story = await OpenAIChatCompletions(payload);
+  const story = await OpenAICompletions(payload);
   return story;
 };
