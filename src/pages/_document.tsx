@@ -32,7 +32,6 @@ export default function Document() {
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        {/* <link rel="manifest" href="/favicon/site.webmanifest" /> */}
       </Head>
       <body>
         <Main />
