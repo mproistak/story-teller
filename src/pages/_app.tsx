@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Layout>
         <Component {...pageProps} key={router.route} />
-        {/* <Analytics /> */}
+        <Analytics />
       </Layout>
     </ChakraProvider>
   );

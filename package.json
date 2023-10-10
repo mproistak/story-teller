@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",
-    "@chakra-ui/react": "^2.8.0",
+    "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@types/node": "18.15.11",
@@ -21,15 +21,15 @@
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "eventsource-parser": "^0.0.5",
-    "framer-motion": "^10.13.0",
+    "framer-motion": "^10.16.4",
     "fs": "0.0.1-security",
     "next": "13.4.1",
-    "openai": "^4.3.0",
+    "openai": "^4.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "sass": "^1.66.1"
+    "sass": "^1.69.1"
   }
 }
