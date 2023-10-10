@@ -6,18 +6,33 @@ export default function Document() {
       <Head>
         <meta property="og:title" content="Your daily horror story" />
         <meta property="og:type" content="article" />
-        <meta
-          property="og:url"
-          content="https://story-teller-henna.vercel.app/"
-        />
+        <meta property="og:url" content="https://www.daily-horror-story.com/" />
         <meta
           property="og:image"
-          content="https://story-teller-henna.vercel.app/header-image.jpg"
+          content="https://www.daily-horror-story.com/header-image.jpg"
         />
         <meta
           property="og:description"
           content="In daily bone-chilling articles, we dare to venture into the heart of darkness to unveil spine-tingling tales of horror."
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        {/* <link rel="manifest" href="/favicon/site.webmanifest" /> */}
       </Head>
       <body>
         <Main />
