@@ -28,8 +28,8 @@ export async function getStaticProps() {
     props: {
       story,
     },
-    // revalidate: 86400, // Revalidate once per day
-    revalidate: 60, // Revalidate every one minute
+    revalidate: 86400, // Revalidate once per day
+    // revalidate: 60, // Revalidate every one minute
   };
 }
 
