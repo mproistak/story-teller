@@ -9,6 +9,10 @@ type Messages = {
   role: 'user' | 'system' | 'assistant';
   content: string;
 };
+
+// Uses the chat completions API. https://platform.openai.com/docs/api-reference/chat/create
+// It takes too long to respond with long texts, which times out on the server during page generation in the build.
+// Breaks the build.
 export interface OpenAIChatCompletionsPayload {
   model: string;
   messages: Messages[];
@@ -29,6 +33,30 @@ export async function OpenAIChatCompletions(
     });
     const completion = await openai.chat.completions.create(payload);
     return completion.choices[0].message.content;
+  } catch (e) {
+    console.log('There is an error', e);
+  }
+}
+
+// Uses the legacy completions API. https://platform.openai.com/docs/api-reference/completions/create.
+// Gives a faster response on the build during page generation.
+export interface OpenAICompletionsPayload {
+  model: string;
+  prompt: string;
+  frequency_penalty: number;
+  presence_penalty: number;
+  temperature: number;
+  top_p: number;
+  max_tokens: number;
+}
+
+export async function OpenAICompletions(payload: OpenAICompletionsPayload) {
+  try {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY_VILLAIN,
+    });
+    const completion = await openai.completions.create(payload);
+    return completion.choices[0].text;
   } catch (e) {
     console.log('There is an error', e);
   }
