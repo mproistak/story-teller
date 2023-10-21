@@ -22,7 +22,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
   };
 
   useEffect(() => {
-    scroll.current?.scrollIntoView({ behavior: 'instant' });
+    scroll.current?.scrollIntoView();
   }, [scroll.current]);
 
   const sendUserMessage = async (event: any) => {
