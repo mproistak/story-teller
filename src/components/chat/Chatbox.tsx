@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   query,
+  where,
   collection,
   orderBy,
   onSnapshot,
   limit,
 } from 'firebase/firestore';
 import { Box } from '@chakra-ui/react';
-import { db } from '../../../firebase';
+import { auth, db } from '../../../firebase';
 import MessageComponent from './MessageComponent';
 import SendMessage from './SendMessage';
 import { Message } from 'src/types';
@@ -17,8 +18,11 @@ const ChatBox = () => {
   const scroll = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!auth.currentUser) return;
+
     const messageQuery = query(
       collection(db, 'messages'),
+      where('currentUserUid', '==', auth.currentUser.uid),
       orderBy('createdAt', 'desc'),
       limit(50)
     );
@@ -34,7 +38,7 @@ const ChatBox = () => {
       setMessages(sortedMessages);
     });
     return () => unsubscribe();
-  }, []);
+  }, [auth.currentUser]);
 
   return (
     <Box

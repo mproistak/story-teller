@@ -40,6 +40,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
       name: displayName,
       avatar: photoURL,
       createdAt: serverTimestamp(),
+      currentUserUid: auth.currentUser.uid,
       uid,
     });
 
@@ -71,6 +72,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
       avatar: systemUser.photoUrl,
       createdAt: serverTimestamp(),
       uid: systemUser.uid,
+      currentUserUid: auth.currentUser?.uid,
     });
   };
 
