@@ -38,7 +38,7 @@ const ChatBox = () => {
       setMessages(sortedMessages);
     });
     return () => unsubscribe();
-  }, [auth.currentUser]);
+  }, []);
 
   return (
     <Box
