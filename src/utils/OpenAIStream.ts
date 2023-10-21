@@ -29,7 +29,7 @@ export async function OpenAIChatCompletions(
 ) {
   try {
     const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY_VILLAIN,
+      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
     });
     const completion = await openai.chat.completions.create(payload);
     return completion.choices[0].message.content;
@@ -50,10 +50,27 @@ export interface OpenAICompletionsPayload {
   max_tokens: number;
 }
 
+export interface OpenAIMessageChatCompletionsPayload {
+  model: string;
+  messages: OpenAiMessage[];
+  frequency_penalty: number;
+  presence_penalty: number;
+  temperature: number;
+  top_p: number;
+  max_tokens: number;
+}
+
+type UserRole = 'system' | 'user' | 'assistant' | 'function';
+
+export interface OpenAiMessage {
+  content: string;
+  role: UserRole;
+}
+
 export async function OpenAICompletions(payload: OpenAICompletionsPayload) {
   try {
     const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY_VILLAIN,
+      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
     });
     const completion = await openai.completions.create(payload);
     return completion.choices[0].text;
@@ -61,6 +78,22 @@ export async function OpenAICompletions(payload: OpenAICompletionsPayload) {
     console.log('There is an error', e);
   }
 }
+
+export const sendMessageChatCompletions = async (
+  payload: OpenAIMessageChatCompletionsPayload
+) => {
+  try {
+    const openai = new OpenAI({
+      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+      dangerouslyAllowBrowser: true,
+    });
+    const completion = await openai.chat.completions.create(payload);
+
+    return completion.choices[0].message.content;
+  } catch (e) {
+    console.log('There is an error', e);
+  }
+};
 
 export interface OpenAIStreamPayload {
   model: string;
@@ -83,7 +116,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     const res = await fetch('https://api.openai.com/v1/completions', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY_VILLAIN ?? ''}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY ?? ''}`,
       },
       method: 'POST',
       body: JSON.stringify(payload),

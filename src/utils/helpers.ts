@@ -1,6 +1,9 @@
 import {
   OpenAICompletions,
   OpenAICompletionsPayload,
+  sendMessageChatCompletions,
+  OpenAiMessage,
+  OpenAIMessageChatCompletionsPayload,
 } from '@utils/OpenAIStream';
 
 export const generateStory = async (prompt: string) => {
@@ -32,4 +35,19 @@ export const generateStory = async (prompt: string) => {
 
   const story = await OpenAICompletions(payload);
   return story;
+};
+
+export const sendMessage = async (messages: OpenAiMessage[]) => {
+  const payload: OpenAIMessageChatCompletionsPayload = {
+    model: 'gpt-3.5-turbo',
+    messages,
+    temperature: 0.77,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    max_tokens: 256,
+  };
+
+  const response = await sendMessageChatCompletions(payload);
+  return response;
 };

@@ -17,17 +17,16 @@ const ChatBox = () => {
   const scroll = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const q = query(
+    const messageQuery = query(
       collection(db, 'messages'),
       orderBy('createdAt', 'desc'),
       limit(50)
     );
 
-    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+    const unsubscribe = onSnapshot(messageQuery, (QuerySnapshot) => {
       const fetchedMessages: any = [];
       QuerySnapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
-        // fetchedMessages.push(doc.data());
       });
       const sortedMessages = fetchedMessages.sort(
         (a: any, b: any) => a.createdAt - b.createdAt

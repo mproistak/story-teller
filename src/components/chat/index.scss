@@ -1,38 +1,25 @@
 .chat-box {
   width: 100%;
-  min-height: 100vh;
-  background-color: #1c2c4c;
+  min-height: fit-content;
+  background-color: rgb(124, 197, 217, 0.4);
   color: #4c768d;
   padding-top: 60px;
 }
 
-/* navbar */
-.nav-bar {
-  padding: 10px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #4c768d;
-  color: #242443;
-  height: 60px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
 .sign-in {
   border: none;
   background-color: transparent;
 }
+
 .sign-in > img {
   height: 30px;
   width: auto;
 }
+
 .sign-out {
   padding: 5px 10px;
   border-radius: 5px;
-  color: #88dded;
+  color: #fff;
   border: 1px solid #1c2c4c;
   background-color: #1c2c4c;
   font-weight: 600;
@@ -43,14 +30,15 @@
   padding: 30px;
   margin-bottom: 60px;
 }
+
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
-  background-color: #7cc5d9;
+  background-color: rgb(124, 197, 217);
   color: #1c2c4c;
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px #4c768d;
+  box-shadow: -2px 2px 1px 1px rgb(62, 110, 121);
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
@@ -84,29 +72,33 @@
 /* send message */
 .send-message {
   position: fixed;
-  bottom: 0px;
+  bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.265);
   width: 100%;
-  padding: 20px 30px;
-  background-color: #4c768d;
-  display: flex;
 }
+
 .send-message > input {
   height: 40px;
   padding: 10px 10px;
   border-radius: 5px 0 0 5px;
   border: none;
-  flex-grow: 1;
+  margin-top: 30px;
+  margin-bottom: 30px;
   background-color: white;
   color: #1c2c4c;
   font-size: 1rem;
+  width: 70%;
 }
+
 .send-message > input:placeholder {
   color: #ddd;
 }
+
 .send-message > :is(input, button):focus {
   outline: none;
   border-bottom: 1px solid #7cc5d9;
 }
+
 .send-message > button {
   width: 70px;
   height: 40px;

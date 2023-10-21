@@ -7,6 +7,7 @@ import Layout from '@layout';
 import theme from '@theme';
 import '@styles/globals.css';
 import '@styles/submarine.scss';
+import '@components/chat/index.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
