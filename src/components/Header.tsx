@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Button } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -52,20 +53,28 @@ const Header = () => {
         </svg>
       </div>
       {user ? (
-        <button onClick={signOut} className="sign-out" type="button">
+        <Button
+          onClick={signOut}
+          className="sign-out"
+          colorScheme="red"
+          color={'#fff'}
+          variant={'outline'}
+        >
           Sign Out
-        </button>
+        </Button>
       ) : (
-        <button className="sign-in">
-          <Image
-            onClick={googleSignIn}
-            src={'/btn_google_signin_dark_pressed_web.png'}
-            alt="sign in with google"
-            width={200}
-            height={500}
-            itemType="button"
-          />
-        </button>
+        <Button
+          leftIcon={
+            <Image src="/google-logo.png" alt="Google" width={16} height={16} />
+          }
+          className="sign-in"
+          onClick={googleSignIn}
+          colorScheme="red"
+          color={'#fff'}
+          variant={'outline'}
+        >
+          Login
+        </Button>
       )}
     </header>
   );

@@ -5,23 +5,9 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.sign-in {
-  border: none;
-  background-color: transparent;
-}
-
-.sign-in > img {
-  height: 30px;
-  width: auto;
-}
-
+.sign-in,
 .sign-out {
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
-  border: 1px solid #1c2c4c;
-  background-color: #1c2c4c;
-  font-weight: 600;
+  margin-left: 20px;
 }
 
 /* chat component */
@@ -73,6 +59,8 @@
 .send-message {
   position: fixed;
   bottom: 50px;
+  right: 0;
+  left: 0;
   width: 100%;
 }
 
