@@ -81,7 +81,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
   return (
     <form onSubmit={(event) => sendUserMessage(event)} className="send-message">
       <div className="message-container">
-        {/* {isLoading && <span>Ghost is typing . ..</span>} */}
+        {isLoading && <span>Ghost is typing ...</span>}
         <div className="message-input">
           <label htmlFor="messageInput" hidden>
             Enter Message
