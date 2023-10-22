@@ -1,13 +1,28 @@
 import React, { useEffect } from 'react';
 import { Box, Collapse, useDisclosure } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import { StoryProps } from '../pages';
 
 const Story = ({ story }: StoryProps) => {
   const { isOpen, onToggle } = useDisclosure();
+  const toast = useToast();
 
   useEffect(() => {
     onToggle();
-  }, []);
+    const toaster = toast({
+      containerStyle: {
+        fontFamily: 'Amatic SC, sans-serif',
+        fontSize: '20px',
+        fontWeight: 800,
+      },
+      status: 'success',
+      description: 'Login to chat with a ghost!',
+      duration: null,
+      isClosable: true,
+    });
+
+    return () => toast.close(toaster);
+  }, [toast]);
 
   return (
     <Box
