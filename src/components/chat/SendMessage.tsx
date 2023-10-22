@@ -15,6 +15,7 @@ type OpenAiUser = {
 
 const SendMessage = ({ scroll }: SendMessageProps) => {
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const systemUser: OpenAiUser = {
     name: 'Ghost',
     photoUrl: process.env.NEXT_PUBLIC_FIREBASE_OPENAI_PHOTO_URL ?? '',
@@ -33,7 +34,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
     }
 
     if (!auth.currentUser) return;
-
+    setIsLoading(true);
     const { uid, displayName, photoURL } = auth.currentUser;
     await addDoc(collection(db, 'messages'), {
       text: message,
@@ -50,6 +51,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
 
     scroll.current?.scrollIntoView({ behavior: 'smooth' });
     setMessage('');
+    setIsLoading(false);
   };
 
   const sendOpenAIResponseMessage = async (messageForReply: string) => {
@@ -78,19 +80,24 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
 
   return (
     <form onSubmit={(event) => sendUserMessage(event)} className="send-message">
-      <label htmlFor="messageInput" hidden>
-        Enter Message
-      </label>
-      <input
-        id="messageInput"
-        name="messageInput"
-        type="text"
-        className="form-input__input"
-        placeholder="type message..."
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button type="submit">Send</button>
+      <div className="message-container">
+        {/* {isLoading && <span>Ghost is typing . ..</span>} */}
+        <div className="message-input">
+          <label htmlFor="messageInput" hidden>
+            Enter Message
+          </label>
+          <input
+            id="messageInput"
+            name="messageInput"
+            type="text"
+            className="form-input__input"
+            placeholder="type message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button type="submit">Send</button>
+        </div>
+      </div>
     </form>
   );
 };
