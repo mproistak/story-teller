@@ -30,6 +30,9 @@
   align-items: flex-start;
   margin-bottom: 20px;
   max-width: 70%;
+
+  animation: message 0.15s ease-out 0s forwards;
+  animation-delay: 0.2s;
 }
 .chat-bubble.right {
   margin-left: auto;
@@ -109,4 +112,19 @@
   border: 1px solid #7cc5d9;
   background-color: #7cc5d9;
   font-weight: 600;
+}
+
+@keyframes message {
+  0% {
+    max-height: 100vmax;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    max-height: 100vmax;
+    overflow: visible;
+    padding-top: 1rem;
+  }
 }
