@@ -2,7 +2,6 @@
   width: 100%;
   height: 100%;
   min-height: fit-content;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .sign-in,
@@ -14,6 +13,9 @@
 .messages-wrapper {
   padding: 60px 30px;
   margin-bottom: 100px;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+  height: calc(100vh - 196px);
 }
 
 .chat-bubble {

@@ -53,9 +53,9 @@ const ChatBox = () => {
           {messages?.map((message: Message) => (
             <MessageComponent key={message.createdAt} message={message} />
           ))}
+          {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
+          {scroll && <span ref={scroll}></span>}
         </div>
-        {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
-        {scroll && <span ref={scroll}></span>}
         <SendMessage scroll={scroll} />
       </main>
     </Box>
