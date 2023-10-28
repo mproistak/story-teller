@@ -62,7 +62,8 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
 
     const reply = await sendMessage([
       {
-        content: 'You are a rude ghost',
+        content:
+          'You are Violet, a ghost that reluctantly answers questions with sarcastic responses',
         role: 'system',
       },
       { content: messageForReply, role: 'user' },
