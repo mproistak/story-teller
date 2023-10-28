@@ -1,7 +1,29 @@
+import React from 'react';
+import { Button } from '@chakra-ui/react';
+import Image from 'next/image';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
+import { auth } from '../../firebase';
+
 const Header = () => {
+  const [user] = useAuthState(auth);
+
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+
+  const headerTitle =
+    `Welcome to your daily horror story` + (user?.uid ? ' - chat' : '');
+
+  const signOut = () => {
+    auth.signOut();
+  };
+
   return (
     <header className="horror-header">
-      <h1 className="horror-title">Welcome to your daily horror story</h1>
+      <h1 className="horror-title">{headerTitle}</h1>
       <div style={{ display: 'none' }}>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>
@@ -33,6 +55,30 @@ const Header = () => {
           </defs>
         </svg>
       </div>
+      {user ? (
+        <Button
+          onClick={signOut}
+          className="sign-out"
+          colorScheme="red"
+          color={'#fff'}
+          variant={'outline'}
+        >
+          Sign Out
+        </Button>
+      ) : (
+        <Button
+          leftIcon={
+            <Image src="/google-logo.png" alt="Google" width={16} height={16} />
+          }
+          className="sign-in"
+          onClick={googleSignIn}
+          colorScheme="red"
+          color={'#fff'}
+          variant={'outline'}
+        >
+          Login
+        </Button>
+      )}
     </header>
   );
 };

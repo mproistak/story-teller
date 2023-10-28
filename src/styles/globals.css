@@ -22,14 +22,17 @@ body {
 }
 
 .horror-header {
+  display: flex;
+  align-items: center;
   background-color: darkred;
   padding: 20px;
+  font-family: 'Amatic SC', sans-serif;
   & h1 {
-    font-family: 'Amatic SC', sans-serif;
     font-size: 3rem;
     animation: squiggly-anim 1s linear infinite;
     display: inline-block;
     vertical-align: middle;
+    margin-left: 100px;
     width: 100%;
     outline: none;
     text-align: center;
