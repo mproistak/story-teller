@@ -31,8 +31,8 @@ const HorrorPage = ({ story }: StoryProps) => {
 export async function getStaticProps() {
   const prompt = `Generate a horror story`;
   // const prompt = `Hello`;
-  // const story = await generateStory(prompt);
-  const story = 'Random text to not charge by hitting api :)';
+  const story = await generateStory(prompt);
+  // const story = 'Random text to not charge by hitting api :)';
 
   return {
     props: {
