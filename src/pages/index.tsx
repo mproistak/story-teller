@@ -17,7 +17,7 @@ const HorrorPage = ({ story }: StoryProps) => {
         {!user ? (
           <>
             <Story story={story} />
-            <Submarine />
+            {/* <Submarine /> */}
           </>
         ) : (
           <ChatBox />

@@ -21,11 +21,11 @@
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
-  background-color: rgb(124, 197, 217);
+  background-color: #fffdd0;
   color: #1c2c4c;
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px rgb(62, 110, 121);
+  box-shadow: -2px 2px 1px 1px #20b2aa;
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
@@ -37,8 +37,8 @@
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
-  background-color: #fff;
-  box-shadow: -2px 2px 1px 1px #88dded;
+  background-color: #fdfefe;
+  box-shadow: -2px 2px 1px 1px #20b2aa;
 }
 .chat-bubble__left {
   width: 35px;
@@ -100,7 +100,7 @@
 
 .send-message :is(input, button):focus {
   outline: none;
-  border-bottom: 1px solid #7cc5d9;
+  border-bottom: 1px solid #20b2aa;
 }
 
 .send-message button {
@@ -109,8 +109,8 @@
   padding: 5px 10px;
   border-radius: 0 5px 5px 0;
   color: #242443;
-  border: 1px solid #7cc5d9;
-  background-color: #7cc5d9;
+  border: 1px solid #20b2aa;
+  background-color: #20b2aa;
   font-weight: 600;
 }
 

@@ -17,7 +17,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const systemUser: OpenAiUser = {
-    name: 'Ghost',
+    name: 'Violet',
     photoUrl: process.env.NEXT_PUBLIC_FIREBASE_OPENAI_PHOTO_URL ?? '',
     uid: process.env.NEXT_PUBLIC_FIREBASE_OPENAI_USERID ?? '',
   };
@@ -82,7 +82,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
   return (
     <form onSubmit={(event) => sendUserMessage(event)} className="send-message">
       <div className="message-container">
-        {isLoading && <span>Ghost is typing ...</span>}
+        {isLoading && <span>Violet is typing ...</span>}
         <div className="message-input">
           <label htmlFor="messageInput" hidden>
             Enter Message

@@ -14,13 +14,16 @@ const Header = () => {
     signInWithPopup(auth, provider);
   };
 
+  const headerTitle =
+    `Welcome to your daily horror story` + (user?.uid ? ' - chat' : '');
+
   const signOut = () => {
     auth.signOut();
   };
 
   return (
     <header className="horror-header">
-      <h1 className="horror-title">Welcome to your daily horror story</h1>
+      <h1 className="horror-title">{headerTitle}</h1>
       <div style={{ display: 'none' }}>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>

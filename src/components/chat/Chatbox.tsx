@@ -44,7 +44,7 @@ const ChatBox = () => {
     <Box
       margin="0px"
       color="white"
-      backgroundImage="/header-image.jpg"
+      backgroundImage="/header-image-haloween.jpg"
       className="horror-box"
       rounded="md"
     >
