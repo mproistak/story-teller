@@ -9,7 +9,7 @@ export default function Document() {
         <meta property="og:url" content="https://www.daily-horror-story.com/" />
         <meta
           property="og:image"
-          content="https://www.daily-horror-story.com/header-image.jpg"
+          content="https://www.daily-horror-story.com/header-image-halloween.jpg"
         />
         <meta
           property="og:description"
