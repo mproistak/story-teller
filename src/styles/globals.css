@@ -46,6 +46,11 @@ body {
   align-items: center;
   padding: 20px;
   background-color: black;
+  & .spinner {
+    position: absolute;
+    top: 50%;
+    height: 100vh;
+  }
 }
 
 .horror-content p {
