@@ -28,7 +28,7 @@ const Story = ({ story }: StoryProps) => {
     <Box
       margin="0px"
       color="white"
-      backgroundImage="/header-image-haloween.jpg"
+      backgroundImage="/header-image-halloween.jpg"
       className="horror-box"
       rounded="md"
     >

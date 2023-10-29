@@ -1,5 +1,6 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { generateStory } from '@utils/helpers';
+import { Box, Spinner } from '@chakra-ui/react';
 import { Footer, Header, Story, Submarine } from '@components';
 import ChatBox from '@components/chat/Chatbox';
 import { auth } from '../../firebase';
@@ -9,18 +10,28 @@ export type StoryProps = {
 };
 
 const HorrorPage = ({ story }: StoryProps) => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+
   return (
     <div className="horror-page">
       <Header />
       <main className="horror-content">
-        {!user ? (
-          <>
-            <Story story={story} />
-            {/* <Submarine /> */}
-          </>
-        ) : (
+        {loading ? (
+          <Box
+            margin="0px"
+            color="white"
+            backgroundImage="/header-image-halloween.jpg"
+            className="horror-box"
+            rounded="md"
+          >
+            <div className="spinner">
+              <Spinner size={'xl'} />
+            </div>
+          </Box>
+        ) : user ? (
           <ChatBox />
+        ) : (
+          <Story story={story} />
         )}
       </main>
       <Footer />
