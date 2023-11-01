@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { sendMessage } from '@utils/helpers';
 import { auth, db } from '../../../firebase';
+import { Message } from 'src/types';
+import { OpenAiMessage } from '@utils/OpenAIStream';
 
 type SendMessageProps = {
   scroll: React.RefObject<HTMLSpanElement>;
+  messages: Message[];
 };
 
 type OpenAiUser = {
@@ -13,7 +16,7 @@ type OpenAiUser = {
   uid: string;
 };
 
-const SendMessage = ({ scroll }: SendMessageProps) => {
+const SendMessage = ({ scroll, messages }: SendMessageProps) => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const systemUser: OpenAiUser = {
@@ -42,6 +45,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
       avatar: photoURL,
       createdAt: serverTimestamp(),
       currentUserUid: auth.currentUser.uid,
+      role: 'user',
       uid,
     });
 
@@ -60,14 +64,21 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
       return;
     }
 
-    const reply = await sendMessage([
+    const prevMessages = messages.map((message) => {
+      return { content: message.text, role: message.role };
+    });
+
+    const messageWithHistory: OpenAiMessage[] = [
       {
         content:
           'You are Violet, a female ghost that reluctantly answers questions with sarcastic responses',
         role: 'system',
       },
+      ...prevMessages,
       { content: messageForReply, role: 'user' },
-    ]);
+    ];
+
+    const reply = await sendMessage(messageWithHistory);
 
     await addDoc(collection(db, 'messages'), {
       text: reply,
@@ -76,6 +87,7 @@ const SendMessage = ({ scroll }: SendMessageProps) => {
       createdAt: serverTimestamp(),
       uid: systemUser.uid,
       currentUserUid: auth.currentUser?.uid,
+      role: 'system',
     });
   };
 
