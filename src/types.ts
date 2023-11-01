@@ -4,4 +4,5 @@ export type Message = {
   createdAt: string;
   name: string;
   text: string;
+  role: 'user' | 'system' | 'assistant' | 'function';
 };
