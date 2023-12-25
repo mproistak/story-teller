@@ -79,8 +79,17 @@ body {
   margin: 0;
 }
 
+@media only screen and (min-width: 993px) {
+  .horror-story-container {
+    max-width: 70%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .horror-story-container {
+    max-width: 95%;
+  }
+}
 .horror-story-container {
   z-index: 2;
-  max-width: 70%;
   overflow: visible !important;
 }

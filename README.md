@@ -5,6 +5,7 @@ An ambitious story telling app powered by OpenAI.
 ## Overview
 
 Using the OpenAI api, a new horror story is presented on a daily basis.
+You can view the app on [https://www.daily-horror-story.com/](https://www.daily-horror-story.com/).
 
 ## Chat mode
 
