@@ -38,11 +38,11 @@ const SendMessage = ({ scroll, messages }: SendMessageProps) => {
 
     if (!auth.currentUser) return;
     setIsLoading(true);
-    const { uid, displayName, photoURL } = auth.currentUser;
+    const { uid } = auth.currentUser;
     await addDoc(collection(db, 'messages'), {
       text: message,
-      name: displayName,
-      avatar: photoURL,
+      name: 'You',
+      avatar: '/anon_user_avatar.jpg',
       createdAt: serverTimestamp(),
       currentUserUid: auth.currentUser.uid,
       role: 'user',
@@ -87,7 +87,7 @@ const SendMessage = ({ scroll, messages }: SendMessageProps) => {
       createdAt: serverTimestamp(),
       uid: systemUser.uid,
       currentUserUid: auth.currentUser?.uid,
-      role: 'system',
+      role: 'assistant',
     });
   };
 
