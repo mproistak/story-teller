@@ -1,17 +1,15 @@
 import React from 'react';
 import { Button } from '@chakra-ui/react';
-import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInAnonymously } from 'firebase/auth';
 
 import { auth } from '../../firebase';
 
 const Header = () => {
   const [user] = useAuthState(auth);
 
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+  const anonymousSignIn = async () => {
+    await signInAnonymously(auth);
   };
 
   const headerTitle =
@@ -63,20 +61,17 @@ const Header = () => {
           color={'#fff'}
           variant={'outline'}
         >
-          Sign Out
+          Get Out
         </Button>
       ) : (
         <Button
-          leftIcon={
-            <Image src="/google-logo.png" alt="Google" width={16} height={16} />
-          }
           className="sign-in"
-          onClick={googleSignIn}
+          onClick={anonymousSignIn}
           colorScheme="red"
           color={'#fff'}
           variant={'outline'}
         >
-          Login
+          Chat
         </Button>
       )}
     </header>
